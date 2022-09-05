@@ -79,20 +79,19 @@ const GameBoard = () => {
             <div>
                 <h5>Your Avatar is: {player.avatar || currentPlayer.avatar}</h5>
                 <div className="wrapper">
-                    {board.map((item, row) => {
-                        return item.map((data, col) => {
-                            return (
-                                <Box
-                                    key={col}
-                                    col={col}
-                                    row={row}
-                                    className={(nextPlayer !== currentPlayer.avatar || winner || !inPlay) ? 'box box-not-allowed' : 'box'}
-                                    data={data}
-                                    onClick={() => onClick(row, col)}
-                                />
-                            )
-                        })
-                    })}
+                    {board.map((item, row) => (
+                        item.map((data, col) => (
+                            <Box
+                                key={col}
+                                col={col}
+                                row={row}
+                                className={(nextPlayer !== currentPlayer.avatar || winner || !inPlay) ? 'box box-not-allowed' : 'box'}
+                                data={data}
+                                onClick={() => onClick(row, col)}
+                            />
+                        )
+                        )
+                    ))}
                 </div>
                 {(!inPlay && currentPlayer.id === 'player 1') && <h6>Your gameId is: <br /> {gameId} <br />Send to you friend to play</h6>}
                 {winner && (
