@@ -11,6 +11,9 @@ const server = http.createServer(app)
 app.use(express.json())
 app.use(cors())
 
+app.get('/', (req, res) => {
+    return res.send('Welcome to the server')
+})
 app.get('/board', Controler.getBoardInfo)
 app.post('/board', Controler.createBoard)
 
